@@ -1,0 +1,4 @@
+{
+  publicKey: 'BGDVQhQc-2zf5P0zFJOsQQyV2AdAsZ2e2OPdv9fpkMJiJJQEBzLNtgknJltW-_V3VPEycknwc5jIK-8jYuH8gBM',
+  privateKey: 'VCDUx4x5ZVSBsB4tXneSga4O3R5BOW6iXbDS2GcBSK0'
+}
