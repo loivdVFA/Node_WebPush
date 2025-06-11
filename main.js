@@ -24,10 +24,6 @@ app.post('/send-notification', async (req, res) => {
   }
   const { title, body } = req.body;
   console.log('deviceId:', dataDevice);
-  var recipient = {
-    deviceId: dataDevice
-  };
-
   var data = {
     notification: {
       title: "Hello from Ably!",
@@ -36,7 +32,17 @@ app.post('/send-notification', async (req, res) => {
     }
   }
 
-  ably.push.admin.publish(dataDevice, data);
+  ably.push.admin.publish(
+    {
+      transportType: 'web',
+      targetUrl: 'aHR0cHM6Ly9mY20uZ29vZ2xlYXBpcy5jb20vZmNtL3NlbmQvZEcxd2lELVpqeVU6QVBBOTFiRkN5TS1fbVl4X2R6T2JqdWJjc0gwTWZlSmZfWVA3dk1jZ2JBRnlldjk5V1VyRjZuS0FPVHNZREVOT3phWGVpSzEzMlJfRzVLNWZZMEhTY190a0xxQlZTbW1hUVZlYWdhLWxVM3gwZTRxbFd4Z3VWZzlpazJvSU9PT1lJZFNmdzBTMUI4RHY=',
+      publicVapidKey: 'BMxOlgYi0zd5-Za8zqmtdfeDTIrD5a4ICr6FW-toQP_DisPoKz_PsZzd0Q5O271gXUiqiwmHv4uCawpV958elV4',
+      encryptionKey: {
+        p256dh: 'BJsh2qsoeXDY0VvyW/F6wgYsmpDIj0JHeMk7n1NSz0mhSSFxjsTrpO2oXDnDwA1isnyuFXWtFsKe+AGsznYTYBM=',
+        auth: 'IARDnA4BxRXqLuV87b8BKg=='
+      }
+    }
+    , data);
 
   // try {
   // await ably.push.admin.publish(
